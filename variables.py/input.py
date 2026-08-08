@@ -5,5 +5,4 @@ name = input("what is your name?")
 country = input("which country are you from? ")
 
 print("Hello,", name)
-print("your are from", country)
-
+print("your from",)

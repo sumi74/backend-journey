@@ -1,3 +1,4 @@
-for i in range(5):
-    print("i am learning python")
+fruits ={"apple", "banana", "mango", "orange"}
 
+for fruit in fruits:
+    print(fruit)

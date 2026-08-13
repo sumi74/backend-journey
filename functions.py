@@ -76,3 +76,14 @@ def is_even(number):
 
 result = is_even(10)
 print(result)
+#
+def is_even(number):
+    if number % 2 ==0:
+       return "even"
+    else:
+        return "odd"
+
+result = is_even(7)
+print(result)
+
+

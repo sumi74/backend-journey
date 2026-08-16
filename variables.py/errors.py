@@ -7,4 +7,10 @@ except ValueError:
 
 except ZeroDivisionError:
      print("you cannot divide by zero.")
+
+else:
+     print("the calculation worked successfully.")
+
+finally:
+     print("program finished.")
      

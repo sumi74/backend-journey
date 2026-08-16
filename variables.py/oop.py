@@ -78,3 +78,170 @@ designer1 = designer("ali", 20, "graphic design")
 
 designer1.study()
 dev1.study()
+
+class developer(student):
+    def work(self):
+        print(f"{self.name} is writing python code")
+
+class designer(student):
+    def work(self):
+        print(f"{self.name} is designing graphics")
+
+dev1 = developer("sundus", 21, "backend developer")
+designer1 = designer("ali", 20, "graphic design")
+
+dev1.work()
+designer1.work()
+
+class tester(student):
+    def work(self):
+        print(f"{self.name} is testing software")
+tester1 = tester("ahmed", 22, "sotware testing")
+
+dev1.work()
+designer1.work()
+tester1.work()
+
+people = [dev1, designer1, tester1]
+
+for person in people:
+    person.work()
+
+from abc import ABC, abstractmethod 
+class animal(ABC):
+
+    @abstractmethod
+    def sound(self):
+        pass
+
+class dog(animal):
+
+    def sound(self):
+        print("dog says: woof!")
+dog = dog()
+dog.sound()
+
+class user: 
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def introduce(self):
+        print(f"my name is {self.name}, l am {self.age} years old.")
+
+user1 = user("sundus", 21)
+user1.introduce()
+
+
+class bank_account:
+    def __init__(self, balance):
+        self.__balance = balance
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def show_balance(self):
+        print(f"you balance is {self.__balance}")
+
+account = bank_account(1000)
+account.show_balance()
+account.deposit(500)
+account.show_balance()
+
+class cat:
+    def sound(self):
+        print("cat says: meow!")
+
+class dog:
+    def sound(self):
+        print("dog says: woof!")
+
+animals = [ cat(), dog()]
+for animal in animals:
+    animal.sound()
+
+
+class bankAcount:
+    def __init__(self, name, balance):
+        self.name = name
+        self.__balance = balance
+
+    def show_balance(self):
+        print(f"{self.name}'s balance is {self.__balance}")
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def  withdraw(self, amount):
+        if amount <= self.__balance:
+            self.__balance -= amount
+            print(f"withdraw: {amount}")
+        else:
+            print("insufficient balance")
+
+    def transfer(self, other_account, amount):
+            if amount <= self.__balance:
+                self.__balance -= amount
+                other_account.__balance += amount
+                print(f"tranferred {amount}")
+            else:
+                print("insufficient balance")
+
+
+account1 = bankAcount("sundus", 1000)
+account1.show_balance()  
+account1.deposit(500)
+account1.show_balance()
+account1.withdraw(300)
+account1.show_balance()
+account1.withdraw(2000)
+account1.show_balance()
+
+account2 = bankAcount("ali", 500)
+
+account1.transfer(account2, 200)
+
+account1.show_balance()
+account2.show_balance()
+
+class bankAcount2:
+    def __init__(self, name, balance):
+        self.name = name
+        self.__balance = balance
+    def show_balance(self):
+        print(F"{self.name}, {self.__balance}")
+
+    def deposit(self,amount):
+        self.__balance += amount
+
+    def withdraw(self, amount):
+        if amount <= self.__balance:
+           self.__balance -= amount
+           print(f"withdraw: {amount}")
+        else:
+            print("insufficient balance")
+
+    def transfer(self, other_account, amount):
+        if amount <= self.__balance:
+            self.__balance -= amount
+            other_account.__balance += amount
+            print(f"tranferred {amount}")
+        else:
+            print("insufficient balance")
+
+
+account1 = bankAcount2("sundus", 1000)
+account1.show_balance()  
+account1.deposit(300)
+account1.show_balance()
+account1.withdraw(200)
+account1.show_balance()
+
+account2 = bankAcount2("ali", 500)
+
+account1.transfer(account2, 400)
+account1.show_balance()
+account2.show_balance()
+
+
+        

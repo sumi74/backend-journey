@@ -1,7 +1,15 @@
-from utils import greet, show_user
 from models import user
+from utils import get_user
 
-user = user("sumaya", "sumaya@example.com")
+user_id = int(input("enter user id: "))
+data = get_user(user_id)
 
-print(greet(user.name))
-show_user(user)
+if data:
+    user = user(
+        data["name"],
+        data["email"],
+        data["address"]["city"]
+
+    )
+
+    user.show_info()

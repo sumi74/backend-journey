@@ -1,6 +1,12 @@
-def  greet(name):
-    return f"hello, {name}!"
+import requests
 
-def show_user(user):
-    print("name:", user.name)
-    print("email:", user.email)
+def get_user(user_id):
+    url = f"https://jsonplaceholder.typicode.com/users/{user_id}"
+
+    response = requests.get(url)
+
+    if response.status_code != 200:
+       print("error:", response.status_code)
+       return None
+
+    return response.json()

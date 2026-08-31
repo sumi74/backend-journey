@@ -4,7 +4,11 @@ import requests
 def get_user(user_id):
     url = f"https://jsonplaceholder.typicode.com/users/{user_id}"
 
-    response = requests.get(url)
+    try:
+        response = requests.get(url)
+    except requests.RequestException:
+        print("Network error. Please check your internet connection.")
+        return None
 
     if response.status_code != 200:
         print("error:", response.status_code)
@@ -51,3 +55,4 @@ def delete_user(user_id):
     response = requests.delete(url)
 
     return response
+

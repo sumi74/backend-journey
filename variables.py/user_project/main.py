@@ -11,7 +11,8 @@ while True:
     print("4. Delete user")
     print("5. Exit")
 
-    choice = input("Choose an option: ")
+    
+    choice = input("Choose an option: ").strip()
 
     # ---------------- GET USER ----------------
     if choice == "1":
@@ -42,6 +43,14 @@ while True:
         name = input("Enter name: ")
         email = input("Enter email: ")
         city = input("Enter city: ")
+
+        if not name.strip() or not email.strip() or not city.strip():
+            print("Name, email, and city cannot be empty.")
+            continue
+
+        if "@" not in email or "." not in email:
+            print("Please enter a valid email.")
+            continue
 
         response = create_user(name, email, city)
 

@@ -127,8 +127,9 @@ from students
 group by city
 having count(*) > 2;
 
+drop table if exists courses;
 
-create table courses (
+create table if not exists courses (
     id integer,
     student_id integer,
     course text
@@ -144,6 +145,28 @@ insert into courses (id, student_id, course)
 values(3, 1, 'django');
 
 select * from courses;
+
+
+select students.name, courses.course
+from students
+join courses
+on students.id = courses.student_id;
+
+select s.name, c.course
+from students as s
+join courses as c
+on s.id = c.student_id;
+
+select s.name, c.course
+from students as s
+left join courses as c
+on s.id = c.student_id;
+
+select s.name, c.course
+from students as s
+right join courses as c
+on s.id = c.student_id
+where c.course = 'python';
 
 
 

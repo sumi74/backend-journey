@@ -53,5 +53,59 @@ FROM customers
 JOIN orders
 ON customers.id = orders.customer_id;
 
+SELECT
+    c.name,
+    o.product,
+    o.price
+FROM customers AS c 
+JOIN orders AS o 
+ON c.id = o.customer_id;
+
+SELECT sum(price) AS total_sales
+from orders;
+
+SELECT 
+    c.name,
+    sum(o.price) AS total_spent
+FROM customers AS c 
+JOIN orders AS o 
+ON c.id = o.customer_id
+GROUP BY c.id, c.name;
+
+
+SELECT
+    c.name,
+    count(o.id) AS total_orders
+from customers AS c 
+JOIN orders AS o 
+ON c.id = o.customer_id
+GROUP BY c.id, c.name;
+
+
+SELECT 
+    c.name,
+    sum(o.price) AS total_spent
+FROM customers AS c 
+JOIN orders AS o 
+ON c.id = o.customer_id
+GROUP BY c.id, c.name
+HAVING sum(o.price) > 600;
+
+SELECT 
+    c.name,
+    o.product
+FROM customers AS c 
+LEFT JOIN orders AS o 
+ON c.id = o.customer_id;
+
+SELECT avg(price) AS average_price
+from orders;
+
+SELECT *
+FROM orders
+WHERE price > (
+    SELECT avg(price)
+    FROM orders
+);
 
 

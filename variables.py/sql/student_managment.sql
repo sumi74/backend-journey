@@ -145,6 +145,71 @@ JOIN enrollments
     ON students.id = enrollments.student_id
 JOIN courses
     ON enrollments.course_id = courses.id
-JOIN courses
-    ON enrollments.course_id = courses.id
 GROUP BY students.id, students.name;
+
+sELECT 
+    students.name, 
+    AVG(enrollments.grade) AS average_grade
+FROM students
+JOIN enrollments 
+  ON students.id = enrollments.student_id
+GROUP BY students.id, students.name;
+
+
+SELECT 
+    students.name, 
+    AVG(enrollments.grade) AS average_grade
+FROM students
+JOIN enrollments 
+  ON students.id = enrollments.student_id
+GROUP BY students.id, students.name
+HAVING AVG(enrollments.grade) > 80;
+
+
+SELECT 
+    students.name, 
+    enrollments.grade
+FROM students
+JOIN enrollments 
+  ON students.id = enrollments.student_id
+WHERE enrollments.grade = (SELECT MAX(grade) 
+FROM enrollments);
+
+SELECT 
+    students.name, 
+    courses.name AS course_name, 
+    enrollments.grade
+FROM students
+JOIN enrollments 
+  ON students.id = enrollments.student_id
+JOIN courses 
+  ON enrollments.course_id = courses.id
+ORDER BY enrollments.grade DESC
+LIMIT 1;
+
+SELECT 
+    courses.name, 
+    AVG(enrollments.grade) AS average_grade
+FROM courses
+JOIN enrollments 
+  ON courses.id = enrollments.course_id
+GROUP BY courses.id, courses.name
+ORDER BY average_grade DESC
+LIMIT 1;
+
+SELECT 
+    students.name AS student_name, 
+    courses.name AS course_name, 
+    enrollments.grade
+FROM students
+JOIN enrollments 
+  ON students.id = enrollments.student_id
+JOIN courses 
+  ON enrollments.course_id = courses.id
+ORDER BY enrollments.grade DESC;
+
+
+SELECT * FROM students;
+
+SELECT * FROM students
+WHERE city = 'nairobi';

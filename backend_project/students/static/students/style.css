@@ -1,0 +1,37 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f6fb;
+    margin: 0;
+    padding: 40px;
+    color: #243047;
+}
+
+h1 {
+    text-align: center;
+    color: #174ea6;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.student-card {
+    background-color: white;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.student-card h3 {
+    color: #174ea6;
+    margin-top: 0;
+}
+
+.student-card p {
+    font-size: 16px;
+    line-height: 1.6;
+}

@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'students/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+</head>
+<body>
+    <h1>Student Management Website</h1>
+    <h2>Our Students</h2>
+    <p style="text-align: center;">
+    <a href="{% url 'add_student' %}">+ Add Student</a>
+</p>
+
+    {% for student in students %}
+        <div class="student-card">
+            <h3>{{ student.name }}</h3>
+            <p>Age: {{ student.age }}</p>
+            <p>City: {{ student.city }}</p>
+        </div>
+        <hr>
+    {% empty %}
+        <p>No students have been added yet.</p>
+    {% endfor %}
+</body>
+</html>

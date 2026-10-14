@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Distribution Expense Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            color: #222;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #f2f5f4;
+        }
+
+        .bar-track {
+            width: 100%;
+            min-width: 140px;
+            height: 16px;
+            background: #e8eeec;
+            border-radius: 8px;
+        }
+
+        .bar {
+            height: 16px;
+            background: #18705b;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Book Distribution Expenses by Category</h1>
+
+    <p>
+        Each total adds the distribution expenses for books in that category.
+        Amounts use the same units as the source spreadsheet.
+    </p>
+    <p>
+        Bar lengths are relative to the largest category total.
+        The longest bar represents the highest expenses.
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Relative expenses</th>
+                <th>Total distribution expenses</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td>{{ category.name }}</td>
+                    <td>
+                        <div class="bar-track" aria-hidden="true">
+                            <div
+                                class="bar"
+                                style="width: {{ category.bar_width|floatformat:2 }}%;"
+                            ></div>
+                        </div>
+                    </td>
+                    <td>{{ category.total_expenses|default:"0.00"|floatformat:2 }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No categories found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

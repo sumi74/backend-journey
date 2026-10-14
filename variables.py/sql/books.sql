@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS books  (
 INSERT INTO books (title, author, price)
 VALUES ('book 1', 'sumi',2.2);
 
-INSERT into books ( title author, price)
+INSERT into books ( title, author, price)
 VALUES('book 3', 'sami', 5.1);
 
 SELECT * FROM books;

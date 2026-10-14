@@ -109,3 +109,37 @@ WHERE price > (
 );
 
 
+SELECT 
+    c.name,
+    o.product,
+    o.price
+FROM customers AS c 
+LEFT JOIN orders AS o 
+ON c.id = o.customer_id;
+
+SELECT 
+    c.name,
+    sum(o.price) AS total_spent
+FROM customers AS c 
+LEFT JOIN orders AS o 
+ON c.id = o.customer_id
+GROUP BY c.id, c.name;
+
+
+SELECT 
+    c.name,
+    o.product,
+    o.price
+FROM customers AS c 
+JOIN orders AS o 
+ON c.id = o.customer_id
+ORDER BY o.price DESC;
+
+SELECT
+    o.product,
+    o.price
+FROM orders AS o 
+WHERE o.price > (
+    SELECT avg(price)
+    FROM orders
+);

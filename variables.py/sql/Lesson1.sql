@@ -164,9 +164,34 @@ on s.id = c.student_id;
 
 select s.name, c.course
 from students as s
-right join courses as c
+join courses as c
 on s.id = c.student_id
 where c.course = 'python';
 
+select s.name, c.course
+from students as s
+join courses as c
+on s.id = c.student_id
+order by s.name asc;
+
+
+select s.name, count(c.id) as total_courses
+from students as s
+left join courses as c
+on s.id = c.student_id
+group by s.id, s.name;
+
+
+select distinct city
+from students;
+
+select name as student_name
+from students;
+
+
+select students.name, courses.course
+from students
+join courses
+on students.id = courses.student_id;
 
 
